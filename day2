@@ -1,0 +1,216 @@
+8)special characters
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class SpecialCharactersCounter {
+    public static void main(String[] args) {
+        String line = "Hello! How are you? 123 #$%^&*";
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9\\s]");
+        Matcher matcher = pattern.matcher(line);
+        int count = 0;
+        System.out.println("Special Characters in the Line:");
+        while (matcher.find()) {
+            System.out.println(matcher.group());
+            count++;
+        }
+        System.out.println("Number of Special Characters: " + count);
+    }}
+9 )ALPHABETICALLY REVERSE
+  import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class ReverseAlphabetical {
+    public static void main(String[] args) {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Pineapple");
+        fruits.add("Grapes");
+        Collections.sort(fruits, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+            }
+        });
+        System.out.println("Fruits sorted in reverse alphabetical order:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+
+10) HALLOW SQUARE PATTERN
+  public class HollowSquarePattern {
+    public static void main(String[] args) {
+        int rows = 5; 
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= rows; j++) {
+                if (i == 1 || i == rows || j == 1 || j == rows) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");3 REVERSED STRING
+
+import java.util.Scanner;
+
+public class ReverseString {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string to reverse: ");
+        String input = scanner.nextLine();
+        scanner.close();
+        
+        String reversedString = reverseUsingStringBuilder(input);
+        
+        System.out.println("Reversed string: " + reversedString);
+    }
+    
+    public static String reverseUsingStringBuilder(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        return sb.reverse().toString();
+    }
+}
+
+4 ALPHABETICALLY REVERSE
+  import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class ReverseAlphabetical {
+    public static void main(String[] args) {
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Pineapple");
+        fruits.add("Grapes");
+        Collections.sort(fruits, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+            }
+        });
+        System.out.println("Fruits sorted in reverse alphabetical order:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+
+5 HALLOW SQUARE PATTERN
+  public class HollowSquarePattern {
+    public static void main(String[] args) {
+        int rows = 5; 
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= rows; j++) {
+                if (i == 1 || i == rows || j == 1 || j == rows) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+ import java.util.Scanner;
+
+public class ConsonantVowelSeparator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String input = scanner.nextLine();
+
+        String consonants = "";
+        String vowels = "";
+
+        for (char c : input.toLowerCase().toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                vowels += c + " ";
+            } else if (c >= 'a' && c <= 'z') {
+                consonants += c + " ";
+            }
+        }
+
+        System.out.println("Consonants: " + consonants.trim());
+        System.out.println("Vowels: " + vowels.trim());
+    }
+}
+
+8) import java.util.Scanner;
+
+public class CharacterSearch {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the string: ");
+        String input = scanner.nextLine();
+        System.out.print("Enter the character to be searched: ");
+        char searchChar = scanner.next().charAt(0);
+
+        boolean found = false;
+        int index = -1;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == searchChar) {
+                found = true;
+                index = i;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println(searchChar + " is found in string at index: " + index);
+        } else {
+            System.out.println(searchChar + " is not found in string");
+        }
+    }
+}
+
+9) import java.util.Arrays;
+import java.util.Scanner;
+
+public class AlphabeticalOrder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the word: ");
+        String input = scanner.nextLine();
+
+        char[] chars = input.toUpperCase().toCharArray();
+        Arrays.sort(chars);
+        String reverseOrder = new StringBuilder(new String(chars)).reverse().toString();
+
+        System.out.println("Alphabetical Order: " + reverseOrder);
+    }
+}
+
+10) import java.util.Scanner;
+
+public class RemoveVowels {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (!isVowel(c)) {
+                output += c;
+            }
+        }
+
+        System.out.println("The string without vowels is: " + output);
+    }
+
+    public static boolean isVowel(char c) {
+        c = Character.toUpperCase(c);
+        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+}
+                }
+            }
+            System.out.println();
+        }
+    }
+}
