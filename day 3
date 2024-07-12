@@ -1,0 +1,271 @@
+Write a program to print the Inverted Full Pyramid pattern?
+public class InvertedFullPyramid {
+
+    public static void main(String[] args) {
+        int rows = 5;
+        invertedFullPyramid(rows);
+    }
+
+    public static void invertedFullPyramid(int rows) {
+        for (int i = rows; i >= 1; i--) { 
+            for (int j = 1; j <= rows - i; j++) {
+                System.out.print("  "); 
+            }
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+Write a program that accepts a string from user and displays the same string after removing vowels from it
+import java.util.Scanner;
+
+public class RemoveVowels {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        String result = removeVowels(input);
+        System.out.println("String after removing vowels: " + result);
+
+        scanner.close();
+    }
+
+    public static String removeVowels(String str) {
+        String regex = "[aeiouAEIOU]";
+        return str.replaceAll(regex, "");
+    }
+}
+Write a program for matrix multiplication
+import java.util.Scanner;
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter dimensions of the first matrix:");
+        System.out.print("Number of rows: ");
+        int rows1 = scanner.nextInt();
+        System.out.print("Number of columns: ");
+        int cols1 = scanner.nextInt();
+
+        System.out.println("Enter dimensions of the second matrix:");
+        System.out.print("Number of rows: ");
+        int rows2 = scanner.nextInt();
+        System.out.print("Number of columns: ");
+        int cols2 = scanner.nextInt();
+
+        if (cols1 != rows2) {
+            System.out.println("Matrix multiplication is not possible.");
+            scanner.close();
+            return;
+        }
+
+        System.out.println("Enter elements of the first matrix:");
+        int[][] matrix1 = inputMatrix(scanner, rows1, cols1);
+
+        System.out.println("Enter elements of the second matrix:");
+        int[][] matrix2 = inputMatrix(scanner, rows2, cols2);
+
+        int[][] resultMatrix = multiplyMatrices(matrix1, matrix2);
+
+        System.out.println("Result of matrix multiplication:");
+        displayMatrix(resultMatrix);
+
+        scanner.close();
+    }
+
+    public static int[][] inputMatrix(Scanner scanner, int rows, int cols) {
+        int[][] matrix = new int[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print("Enter element [" + (i + 1) + "][" + (j + 1) + "]: ");
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+        return matrix;
+    }
+
+    public static int[][] multiplyMatrices(int[][] matrix1, int[][] matrix2) {
+        int rows1 = matrix1.length;
+        int cols1 = matrix1[0].length;
+        int cols2 = matrix2[0].length;
+
+        int[][] resultMatrix = new int[rows1][cols2];
+
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols2; j++) {
+                for (int k = 0; k < cols1; k++) {
+                    resultMatrix[i][j] += matrix1[i][k] * matrix2[k][j];
+                }
+            }
+        }
+
+        return resultMatrix;
+    }
+    public static void displayMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int value : row) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+import java.util.ArrayList;
+
+public class MergeSortedArrays {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5, 7, 9};
+        int[] arr2 = {2, 4, 6, 8, 10};
+
+        ArrayList<Integer> mergedList = mergeSortedArrays(arr1, arr2);
+
+        System.out.println("Merged Array:");
+        for (int num : mergedList) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static ArrayList<Integer> mergeSortedArrays(int[] arr1, int[] arr2) {
+        ArrayList<Integer> mergedList = new ArrayList<>();
+
+        int i = 0, j = 0;
+        
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] <= arr2[j]) {
+                mergedList.add(arr1[i]);
+                i++;
+            } else {
+                mergedList.add(arr2[j]);
+                j++;
+            }
+        }
+        
+        while (i < arr1.length) {
+            mergedList.add(arr1[i]);
+            i++;
+        }
+
+        while (j < arr2.length) {
+            mergedList.add(arr2[j]);
+            j++;
+        }
+
+        return mergedList;
+    }
+}
+Write a java  program for Merge two sorted arrays using Array list 
+import java.util.ArrayList;
+
+public class MergeSortedArrays {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5, 7, 9};
+        int[] arr2 = {2, 4, 6, 8, 10};
+
+        ArrayList<Integer> mergedList = mergeSortedArrays(arr1, arr2);
+
+        System.out.println("Merged Array:");
+        for (int num : mergedList) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static ArrayList<Integer> mergeSortedArrays(int[] arr1, int[] arr2) {
+        ArrayList<Integer> mergedList = new ArrayList<>();
+
+        int i = 0, j = 0;
+        
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] <= arr2[j]) {
+                mergedList.add(arr1[i]);
+                i++;
+            } else {
+                mergedList.add(arr2[j]);
+                j++;
+            }
+        }
+        while (i < arr1.length) {
+            mergedList.add(arr1[i]);
+            i++;
+        }
+        while (j < arr2.length) {
+            mergedList.add(arr2[j]);
+            j++;
+        }
+
+        return mergedList;
+    }
+}
+  write a java program Find the Mean, Median, Mode of the array of numbers
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class MeanMedianMode {
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 7, 2, 3, 5, 7, 8, 4, 2, 9, 1};
+
+        double mean = calculateMean(arr);
+        System.out.println("Mean: " + mean);
+
+        double median = calculateMedian(arr);
+        System.out.println("Median: " + median);
+
+        int[] mode = calculateMode(arr);
+        System.out.print("Mode: ");
+        for (int num : mode) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static double calculateMean(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return (double) sum / arr.length;
+    }
+
+    public static double calculateMedian(int[] arr) {
+        Arrays.sort(arr);
+        int n = arr.length;
+        if (n % 2 == 0) {
+            return (double) (arr[n / 2 - 1] + arr[n / 2]) / 2;
+        } else {
+            return (double) arr[n / 2];
+        }
+    }
+
+    // Method to calculate Mode
+    public static int[] calculateMode(int[] arr) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        int maxFrequency = 0;
+        for (int frequency : frequencyMap.values()) {
+            if (frequency > maxFrequency) {
+                maxFrequency = frequency;
+            }
+        }
+
+        int countModes = 0;
+        for (int key : frequencyMap.keySet()) {
+            if (frequencyMap.get(key) == maxFrequency) {
+                countModes++;
+            }
+        }
+        int[] modes = new int[countModes];
+        int index = 0;
+        for (int key : frequencyMap.keySet()) {
+            if (frequencyMap.get(key) == maxFrequency) {
+                modes[index++] = key;
+            }
+        }
+
+        return modes;
+    }
+}
