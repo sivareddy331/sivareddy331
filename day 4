@@ -1,0 +1,75 @@
+1) import java.util.Scanner;
+
+public class EvenOdd {
+
+    public static void main(String[] args) {
+
+        Scanner reader = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = reader.nextInt();
+
+        if(num % 2 == 0)
+            System.out.println(num + " is even");
+        else
+            System.out.println(num + " is odd");
+    }
+}
+
+2) import java.util.Scanner;
+
+public class EvenOdd {
+
+    public static void main(String[] args) {
+
+        Scanner reader = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = reader.nextInt();
+
+        if(num % 2 == 0)
+            System.out.println(num + " is even");
+        else
+            System.out.println(num + " is odd");
+    }
+}
+
+3) import java.util.Scanner;
+
+public class  Main{
+
+	public static void main(String[] args) {
+		String s = "prepinsta";
+		char[] c = s.toCharArray();
+		int vowel=0;
+		
+		for (int i = 0; i < s.length(); i++) { 
+            if(s.charAt(i)=='a' || s.charAt(i)=='e' || s.charAt(i)=='i' || s.charAt(i)=='o' || s.charAt(i)=='u') 
+                vowel++; 
+		}
+  
+	System.out.println("Vowels: " + vowel);
+    }
+}
+
+4) class Main {
+  public static void main(String[] args) {
+
+    int num = 1234, reversed = 0;
+    
+    System.out.println("Original Number: " + num);
+
+    // run loop until num becomes 0
+    while(num != 0) {
+    
+      // get last digit from num
+      int digit = num % 10;
+      reversed = reversed * 10 + digit;
+
+      // remove the last digit from num
+      num /= 10;
+    }
+
+    System.out.println("Reversed Number: " + reversed);
+  }
+}
