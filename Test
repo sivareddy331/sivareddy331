@@ -1,0 +1,60 @@
+1)    interface Animal{
+    void soundanimal();
+    void sleep();
+}
+
+class pig implements Animal{
+    public void soundanimal(){
+        System.out.println("wee wee");
+    }
+    public void sleep(){
+        System.out.println("Zzz");
+    }
+}
+
+public class main{
+    public static void main(String [] args){
+        pig mypig = new pig();
+        mypig.soundanimal();
+        mypig.sleep();
+    }
+}
+
+
+2)  interface polygon{
+   void  getArea(int length , int breath);
+        }
+        class rectangle implements polygon {
+        public  void getArea( int length, int breath ) {
+                System.out.println("the area of rectangle is:"+( length*breath));
+            }
+        }
+    public class main{
+        public static void main(String []args){
+            rectangle r1 = new rectangle();
+            r1.getArea(5,6);
+        }
+    }
+
+3)interface CheckEvenOdd {
+    boolean isEven(int number);
+}
+
+class EvenOddChecker implements CheckEvenOdd {
+    public boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+}
+
+public class EvenOddProgram {
+    public static void main(String[] args) {
+        CheckEvenOdd checker = new EvenOddChecker();
+
+        int num = 7;
+        if (checker.isEven(num)) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is odd.");
+        }
+    }
+}
