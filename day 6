@@ -1,0 +1,144 @@
+7) def create_array(lower_range, upper_range):
+    if lower_range > upper_range:
+        return "Invalid range. Lower range should be less than or equal to upper range."
+    else:
+        return [(i, i**2) for i in range(lower_range, upper_range + 1)]
+
+lower_range = int(input("Enter the lower range: "))
+upper_range = int(input("Enter the upper range: "))
+
+print(create_array(lower_range, upper_range)) 
+
+
+8) import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private int accountNumber;
+    private String accountType;
+    private double balance;
+
+    public BankAccount() {
+        this.balance = 500.00; // Minimum balance
+    }
+
+    public void readAccountDetails(Scanner scanner) {
+        System.out.print("Enter account number: ");
+        this.accountNumber = scanner.nextInt();
+
+        System.out.print("Enter depositor name: ");
+        this.depositorName = scanner.next();
+
+        System.out.print("Enter type of account (Savings/Current): ");
+        this.accountType = scanner.next();
+    }
+
+    public void depositAmount(Scanner scanner) {
+        System.out.print("Enter amount to deposit: ");
+        double amount = scanner.nextDouble();
+        this.balance += amount;
+    }
+
+    public void displayBalance() {
+        System.out.println("Account Number: " + this.accountNumber);
+        System.out.println("Depositor Name: " + this.depositorName);
+        System.out.println("Account Type: " + this.accountType);
+        System.out.println("Balance: " + this.balance);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        BankAccount account = new BankAccount();
+        account.readAccountDetails(scanner);
+        account.displayBalance();
+        account.depositAmount(scanner);
+        account.displayBalance();
+    }
+} 
+
+
+9) import java.util.Scanner;
+
+public class Palindrome {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        int result = reverseAndAdd(num);
+        System.out.println("The palindrome number is: " + result);
+    }
+
+    public static int reverseNumber(int num) {
+        int reverse = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num /= 10;
+        }
+        return reverse;
+    }
+
+    public static boolean isPalindrome(int num) {
+        int reverse = reverseNumber(num);
+        return num == reverse;
+    }
+
+    public static int reverseAndAdd(int num) {
+        while (!isPalindrome(num)) {
+            int reverse = reverseNumber(num);
+            num += reverse;
+        }
+        return num;
+    }
+} 
+
+
+
+10) class Customer {
+    int accountNo;
+    String accName;
+    double balance;
+    Object lock = new Object();
+
+    Customer(int accountNo, String accName, double balance) {
+        this.accountNo = accountNo;
+        this.accName = accName;
+        this.balance = balance;
+    }
+
+    synchronized void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit operation completed. Balance: " + balance);
+        notifyAll();
+    }
+
+    synchronized void withdraw(double amount) {
+        while (balance < amount) {
+            try {
+                System.out.println("Insufficient balance. Waiting for deposit...");
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        balance -= amount;
+        System.out.println("Withdraw operation completed. Balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        Customer customer = new Customer(1234, "John Doe", 10000);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter amount to withdraw: ");
+        double withdrawAmount = scanner.nextDouble();
+
+        Thread withdrawThread = new Thread(() -> customer.withdraw(withdrawAmount));
+        withdrawThread.start();
+
+        System.out.print("Enter amount to deposit: ");
+        double depositAmount = scanner.nextDouble();
+
+        Thread depositThread = new Thread(() -> customer.deposit(depositAmount));
+        depositThread.start();
+    }
+}
