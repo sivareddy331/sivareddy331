@@ -1,0 +1,48 @@
+class Customer {
+    int accountNo;
+    String accName;
+    double balance;
+    Object lock = new Object();
+
+    Customer(int accountNo, String accName, double balance) {
+        this.accountNo = accountNo;
+        this.accName = accName;
+        this.balance = balance;
+    }
+
+    synchronized void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit operation completed. Balance: " + balance);
+        notifyAll();
+    }
+
+    synchronized void withdraw(double amount) {
+        while (balance < amount) {
+            try {
+                System.out.println("Insufficient balance. Waiting for deposit...");
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        balance -= amount;
+        System.out.println("Withdraw operation completed. Balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        Customer customer = new Customer(1234, "John Doe", 10000);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter amount to withdraw: ");
+        double withdrawAmount = scanner.nextDouble();
+
+        Thread withdrawThread = new Thread(() -> customer.withdraw(withdrawAmount));
+        withdrawThread.start();
+
+        System.out.print("Enter amount to deposit: ");
+        double depositAmount = scanner.nextDouble();
+
+        Thread depositThread = new Thread(() -> customer.deposit(depositAmount));
+        depositThread.start();
+    }
+}
