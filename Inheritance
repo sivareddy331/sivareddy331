@@ -1,0 +1,76 @@
+1.multiple inheritance
+
+interface Animal {
+    void eat();
+}
+
+interface Mammal {
+    void walk();
+}
+class Human implements Animal, Mammal{
+    public void eat() {
+        System.out.println("Human is eating");
+    }
+    public void walk() {
+        System.out.println("Human is walking");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Human human = new Human();
+        human.eat(); 
+        human.walk(); 
+    }
+}
+
+2.Single inheritance
+class Vehicle {
+    
+    void start() {
+        System.out.println("The vehicle starts.");
+    }
+}
+
+class Car extends Vehicle {
+    void drive() {
+        System.out.println("The car drives.");
+    }
+}
+
+public class SingleInheritanceDemo {
+    public static void main(String[] args) {
+        Car obj = new Car();
+        obj.start(); 
+        obj.drive(); 
+    }
+}
+
+3.multilevelinheritance
+
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Mammal extends Animal {
+    void breathe() {
+        System.out.println("This mammal breathes air.");
+    }
+}
+
+class Dog extends Mammal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class MultilevelInheritanceExample {
+    public static void main(String[] args) {
+        Dog obj = new Dog();
+        obj.eat(); 
+        obj.breathe(); 
+        obj.bark(); 
+    }
+}
