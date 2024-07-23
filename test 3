@@ -1,0 +1,85 @@
+1.
+interface Animal{
+void eat();
+}
+interface mammal{
+void walk();
+}
+class Human implements Animal,mammal{
+public void eat(){
+System.out.println("human is eating");
+}
+public void walk(){
+System.out.println("human is walking");
+}
+}
+public class multipleinheritance{
+public static void main(String[]args){
+Human obj=new Human();
+obj.eat();
+obj.walk();
+}
+}
+
+
+2.
+interface Adder {
+    int add(int a, int b);
+}
+
+interface Multiplier {
+    int multiply(int a, int b);
+}
+
+class Calculator implements Adder, Multiplier {
+  
+    
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        
+        int sum = calculator.add(5, 10);
+        System.out.println("Sum: " + sum);
+        
+        int product = calculator.multiply(5, 10);
+        System.out.println("Product: " + product);
+    }
+}
+
+3.
+interface CheckEvenOdd {
+    boolean isEven(int number);
+}
+
+class EvenOddChecker implements CheckEvenOdd {
+    public boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+}
+
+public class EvenOddProgram {
+    public static void main(String[] args) {
+        CheckEvenOdd checker = new EvenOddChecker();
+
+        int num = 7;
+        if (checker.isEven(num)) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is odd.");
+        }
+    }
+}
+
+
+
+
+
